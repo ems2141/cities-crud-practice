@@ -32,4 +32,13 @@ feature 'CRUDing cities' do
     expect(page).to have_content 'Fort Collins'
     expect(page).to have_no_content 'Denver'
   end
+
+  scenario 'user can delete a city' do
+    City.create!(name: "Denver")
+    visit '/cities'
+    click_on "Denver"
+    click_on 'Delete'
+
+    expect(page).to have_no_content 'Denver!'
+  end
 end
