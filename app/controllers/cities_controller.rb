@@ -15,4 +15,15 @@ class CitiesController < ApplicationController
   def show
     @city = City.find(params[:id])
   end
+
+  def edit
+    @city = City.find(params[:id])
+  end
+
+  def update
+    @city = City.find(params[:id])
+    @city.name = params[:city][:name]
+    @city.save
+    redirect_to cities_path
+  end
 end
