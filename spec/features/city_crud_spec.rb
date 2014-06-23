@@ -11,4 +11,12 @@ feature 'CRUDing cities' do
 
     expect(page).to have_content 'New York'
   end
+
+  scenario 'user can show a city' do
+    City.create!(name: "Denver")
+    visit '/cities'
+    click_on "Denver"
+
+    expect(page).to have_content 'This is Denver!'
+  end
 end
